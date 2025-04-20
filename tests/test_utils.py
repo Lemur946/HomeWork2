@@ -36,6 +36,9 @@ def test_product_from_json() -> None:
         }
     ]
 
+    Category.category_count = 0
+    Category.product_count = 0
+
     categories = product_from_json(mock_data)
 
     assert len(categories) == 2
@@ -45,11 +48,11 @@ def test_product_from_json() -> None:
     assert isinstance(cat1, Category)
     assert cat1.name == "Electronics"
     assert cat1.description == "Gadgets"
-    assert len(cat1.products) == 2
-    assert cat1.products[0].name == "Laptop"
 
     # Second category check
     cat2 = categories[1]
-    assert len(cat2.products) == 2
-    assert cat2.products[0].name == "Laptop"
-    assert cat2.products[1].name == "Phone"
+    assert len(cat2.products) == 69
+
+    # Checking the formatted output of products
+    expected_output = "Laptop, 1500.0 руб. Остаток: 10 шт.\n" "Phone, 800.0 руб. Остаток: 15 шт."
+    assert cat1.products == expected_output
