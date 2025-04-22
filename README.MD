@@ -8,6 +8,7 @@ Category classes have been created and their properties have been defined. Also,
 Category
 class.
 2) Data loading by categories and products from a JSON file has been implemented.
+3) In the Category class, the product list attribute has private access mode. In the Product class, the price attribute has private access mode.
 ## Installation:
 1. Clone the repository:
 [GitHub](https://github.com/Lemur946/HomeWork)
