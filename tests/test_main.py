@@ -38,3 +38,18 @@ def test_main_category_init(first_category: Category, second_category: Category)
     assert second_category.products == '55" QLED 4K, 123000.0 руб. Остаток: 7 шт.'
     assert Category.category_count == 2
     assert Category.product_count == 4
+
+
+def test_product_str(product: Product) -> None:
+    """Test method that returns a string in the product class"""
+    assert str(product) == "Телевизоры, 145222.5 руб. Остаток: 5 шт."
+
+
+def test_product_add(product_1: Product, product_2: Product) -> None:
+    """Test of the magical addition method in the category class"""
+    assert product_1 + product_2 == 1300.0
+
+
+def test_category_str(first_category: Category) -> None:
+    """Test method that returns a string in the category class"""
+    assert str(first_category) == "Смартфоны, количество продуктов: 7 шт."
