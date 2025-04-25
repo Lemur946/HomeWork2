@@ -67,3 +67,25 @@ def second_category() -> Category:
             )
         ],
     )
+
+
+@pytest.fixture()
+def product_1() -> Product:
+    """Fixture for testing the magic addition method in the category class"""
+    return Product(
+        name="Телевизоры",
+        description="Современный телевизор",
+        price=100.0,
+        quantity=5,
+    )
+
+
+@pytest.fixture()
+def product_2() -> Product:
+    """Fixture for testing the magic addition method in the category class"""
+    return Product(
+        name="Смартфоны",
+        description="Современный смартфон",
+        price=200.0,
+        quantity=4,
+    )
