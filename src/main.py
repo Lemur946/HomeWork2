@@ -58,7 +58,7 @@ class Category:
         Category.product_count += len(products)
 
     def __str__(self) -> str:
-        return f"{self.name}, количество продуктов: {Category.product_count} шт."
+        return f"{self.name}, количество продуктов: {len(self.__products)} шт."
 
     @property
     def products(self) -> str:

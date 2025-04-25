@@ -52,4 +52,4 @@ def test_product_add(product_1: Product, product_2: Product) -> None:
 
 def test_category_str(first_category: Category) -> None:
     """Test method that returns a string in the category class"""
-    assert str(first_category) == "Смартфоны, количество продуктов: 7 шт."
+    assert str(first_category) == "Смартфоны, количество продуктов: 3 шт."
