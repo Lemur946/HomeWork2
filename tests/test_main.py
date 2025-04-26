@@ -1,4 +1,6 @@
-from src.main import Category, Product
+import pytest
+
+from src.main import Category, LawnGrass, Product, Smartphone
 
 
 def test_main_product_init(product: Product) -> None:
@@ -50,6 +52,57 @@ def test_product_add(product_1: Product, product_2: Product) -> None:
     assert product_1 + product_2 == 1300.0
 
 
+def test_product_add_error(product_1: Smartphone) -> None:
+    """Test of the Error addition method in the category class"""
+    with pytest.raises(TypeError):
+       assert product_1 + 1
+
+
 def test_category_str(first_category: Category) -> None:
     """Test method that returns a string in the category class"""
     assert str(first_category) == "Смартфоны, количество продуктов: 27 шт."
+
+
+def test_smartphone_init(smartphone_1: Smartphone) -> None:
+    """Tests the correct initialization of the Smartphone object."""
+    assert smartphone_1.name == "Iphone 15"
+    assert smartphone_1.description == "512GB, Gray space"
+    assert smartphone_1.price == 210000.0
+    assert smartphone_1.quantity == 8
+    assert smartphone_1.efficiency == 98.2
+    assert smartphone_1.color == "Gray space"
+    assert smartphone_1.memory == 512
+    assert smartphone_1.model == "15"
+
+
+def test_smartphone_add(smartphone_1: Smartphone, smartphone_2: Smartphone) -> None:
+    """Test of the magical addition method in the category class"""
+    assert smartphone_1 + smartphone_2 == 2580000.0
+
+
+def test_smartphone_add_error(smartphone_1: Smartphone) -> None:
+    """Test of the Error addition method in the category class"""
+    with pytest.raises(TypeError):
+       assert smartphone_1 + 1
+
+
+def test_lawn_grass_init(lawn_grass_1: LawnGrass) -> None:
+    """Tests the correct initialization of the LawnGrass object."""
+    assert lawn_grass_1.name == "Газонная трава"
+    assert lawn_grass_1.price == 500.0
+    assert lawn_grass_1.quantity == 20
+    assert lawn_grass_1.description == "Элитная трава для газона"
+    assert lawn_grass_1.color == "Зеленый"
+    assert lawn_grass_1.country == "Россия"
+    assert lawn_grass_1.germination_period == "7 дней"
+
+
+def test_lawn_grass_add(lawn_grass_1: Smartphone, lawn_grass_2: Smartphone) -> None:
+    """Test of the magical addition method in the category class"""
+    assert lawn_grass_1 + lawn_grass_2 == 16750.0
+
+
+def test_lawn_grass_add_error(lawn_grass_1: Smartphone) -> None:
+    """Test of the Error addition method in the category class"""
+    with pytest.raises(TypeError):
+        assert  lawn_grass_1 + 1
