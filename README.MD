@@ -10,6 +10,8 @@ class.
 2) Data loading by categories and products from a JSON file has been implemented.
 3) In the Category class, the product list attribute has private access mode. In the Product class, the price attribute has private access mode.
 4) Implemented Using magic methods \_\_str__ and \_\_add__
+5) Added two heir classes. Improved the addition functionality so that it is possible to add products only from the same product classes. 
+Improved the method that adds a product to a category so that it is not possible to add any other object instead of the product or its heirs.
 ## Installation:
 1. Clone the repository:
 [GitHub](https://github.com/Lemur946/HomeWork)
