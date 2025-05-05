@@ -1,6 +1,57 @@
 import pytest
 
-from src.main import Category, LawnGrass, Product, Smartphone
+from src.main import BaseProduct, Category, LawnGrass, PrintMixin, Product, Smartphone
+
+
+class TestBaseProduct:
+    """
+    Class for test an abstract base class for products that defines required methods.
+    """
+
+    def test_abstract_class(self) -> None:
+        """
+        test an abstract base class for products that defines required methods.
+        """
+        with pytest.raises(TypeError):
+            BaseProduct()
+
+
+class TestPrintMixin:
+    """
+    Class for test mixin for adding functionality to display product information.
+    """
+
+    def test_mixin_repr(self, capsys: None) -> None:
+        """
+        test mixin for adding functionality to display product information.
+        """
+
+        class TestClass(PrintMixin):
+            def __init__(self) -> None:
+                self.name = "Test"
+                self.description = "Test desc"
+                self._PrintMixin__price = 100.0
+                self.quantity = 5
+                super().__init__()
+
+        obj = TestClass()
+        captured = capsys.readouterr()
+        assert captured.out.strip() == repr(obj)
+
+    def test_mixin_property(self) -> None:
+        """test mixin for adding functionality to display product information."""
+
+        class TestClass(PrintMixin):
+            def __init__(self) -> None:
+                self.name = "Test"
+                self.description = "Test desc"
+                self.quantity = 1
+                self._PrintMixin__price = 150.0
+
+            PrintMixin.__init__(self)
+
+        obj = TestClass()
+        assert obj.price == 150.0
 
 
 def test_main_product_init(product: Product) -> None:
@@ -55,12 +106,24 @@ def test_product_add(product_1: Product, product_2: Product) -> None:
 def test_product_add_error(product_1: Smartphone) -> None:
     """Test of the Error addition method in the category class"""
     with pytest.raises(TypeError):
-       assert product_1 + 1
+        assert product_1 + 1
 
 
 def test_category_str(first_category: Category) -> None:
     """Test method that returns a string in the category class"""
     assert str(first_category) == "Смартфоны, количество продуктов: 27 шт."
+
+
+def test_add_product_valid(sample_category: Category, new_product: Product) -> None:
+    initial_count = Category.product_count
+    sample_category.add_product(new_product)
+    assert len(sample_category.products.split("\n")) == 3
+    assert Category.product_count == initial_count + 1
+
+
+def test_add_product_invalid(sample_category: Category) -> None:
+    with pytest.raises(TypeError):
+        sample_category.add_product("invalid product")
 
 
 def test_smartphone_init(smartphone_1: Smartphone) -> None:
@@ -83,7 +146,7 @@ def test_smartphone_add(smartphone_1: Smartphone, smartphone_2: Smartphone) -> N
 def test_smartphone_add_error(smartphone_1: Smartphone) -> None:
     """Test of the Error addition method in the category class"""
     with pytest.raises(TypeError):
-       assert smartphone_1 + 1
+        assert smartphone_1 + 1
 
 
 def test_lawn_grass_init(lawn_grass_1: LawnGrass) -> None:
@@ -105,4 +168,4 @@ def test_lawn_grass_add(lawn_grass_1: Smartphone, lawn_grass_2: Smartphone) -> N
 def test_lawn_grass_add_error(lawn_grass_1: Smartphone) -> None:
     """Test of the Error addition method in the category class"""
     with pytest.raises(TypeError):
-        assert  lawn_grass_1 + 1
+        assert lawn_grass_1 + 1
