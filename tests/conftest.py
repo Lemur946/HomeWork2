@@ -111,3 +111,14 @@ def lawn_grass_1() -> LawnGrass:
 @pytest.fixture()
 def lawn_grass_2() -> LawnGrass:
     return LawnGrass("Газонная трава 2", "Выносливая трава", 450.0, 15, "США", "5 дней", "Темно-зеленый")
+
+
+@pytest.fixture
+def sample_category() -> Category:
+    products = [Product("P1", "Desc1", 100, 2), Product("P2", "Desc2", 200, 3)]
+    return Category("Electronics", "Tech", products)
+
+
+@pytest.fixture
+def new_product() -> Product:
+    return Product("P3", "Desc3", 300, 4)

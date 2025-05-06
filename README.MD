@@ -12,6 +12,9 @@ class.
 4) Implemented Using magic methods \_\_str__ and \_\_add__
 5) Added two heir classes. Improved the addition functionality so that it is possible to add products only from the same product classes. 
 Improved the method that adds a product to a category so that it is not possible to add any other object instead of the product or its heirs.
+6) Create a base abstract class named BaseProduct, which will be the parent of the product class.
+7) Implement a mixin class that will print information to the console about which class and with what parameters the object was created when an object is created, that is, when the 
+\_\_init__ method is running.
 ## Installation:
 1. Clone the repository:
 [GitHub](https://github.com/Lemur946/HomeWork)
