@@ -169,3 +169,7 @@ def test_lawn_grass_add_error(lawn_grass_1: Smartphone) -> None:
     """Test of the Error addition method in the category class"""
     with pytest.raises(TypeError):
         assert lawn_grass_1 + 1
+
+
+def test_middle_price(first_category):
+    assert first_category.middle_price() == 140333.33333333334

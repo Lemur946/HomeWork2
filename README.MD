@@ -15,6 +15,9 @@ Improved the method that adds a product to a category so that it is not possible
 6) Create a base abstract class named BaseProduct, which will be the parent of the product class.
 7) Implement a mixin class that will print information to the console about which class and with what parameters the object was created when an object is created, that is, when the 
 \_\_init__ method is running.
+8) If the user creates a product with a quantity of zero, a ValueError exception is thrown
+9) A new method has been implemented that calculates the average price of all products. 
+Exceptions are used to handle the case where there are no products in the category and the sum of all products is divided by zero. If this happens, zero is returned.
 ## Installation:
 1. Clone the repository:
 [GitHub](https://github.com/Lemur946/HomeWork)
